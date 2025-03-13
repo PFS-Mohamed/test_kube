@@ -40,7 +40,7 @@ COPY supervisord/supervisord.d/ /etc/supervisord.d/
 RUN dnf install -y zip bzip2 unzip ImageMagick nano gettext ccze git wget bash-completion GeoIP GeoIP-GeoLite-data jpegoptim optipng hunspell-de hunspell-es-ES hunspell-nl hunspell-fr hunspell-it hunspell-en-GB iptables fail2ban whois monit pwgen telnet net-tools iputils procps-ng colordiff atop btop htop iotop dstat
 
 # Init script
-COPY init.sh /usr/local/bin/init.sh
+COPY /etc/init.sh /usr/local/bin/init.sh
 RUN chmod +x /usr/local/bin/init.sh
 
 # Répertoires nécessaires
