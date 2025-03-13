@@ -21,7 +21,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-         docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/test_kube:latest -f docker_prism/dev/etc/Dockerfile docker_prism/dev
+         docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/test_kube:latest -f docker_prism/dev/etc/Dockerfile docker_prism/dev/etc
 
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/test_kube:latest
