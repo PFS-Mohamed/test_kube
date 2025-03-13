@@ -27,9 +27,9 @@ COPY apache/.docpasswd /etc/httpd/.docpasswd
 COPY certs/ /etc/letsencrypt/
 
 # PHP config
-COPY php/php.ini /etc/php.ini
-COPY php/php-fpm.conf /etc/php-fpm.conf
-COPY php/php-fpm.d/ /etc/php-fpm.d/
+COPY /etc/php/php.ini /etc/php.ini
+COPY /etc/php/php-fpm.conf /etc/php-fpm.conf
+COPY /etc/php/php-fpm.d/ /etc/php-fpm.d/
 
 # Supervisor (très important pour lancer plusieurs services proprement en Kubernetes)
 RUN dnf install -y supervisor
