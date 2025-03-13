@@ -15,13 +15,13 @@ spec:
     spec:
       containers:
         - name: php-app
-          image: pfs-mohamed/test_kube:latest
+          image: mohamedtolbapfs/test_kube:latest
           ports:
             - containerPort: 80
             - containerPort: 443
           volumeMounts:
             - name: certs
-              mountPath: /etc/letsencrypt
+              mountPath: docker_prism/etc/letsencrypt
             - name: php-logs
               mountPath: /var/log/php
       volumes:
