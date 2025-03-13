@@ -33,8 +33,8 @@ COPY php/php-fpm.d/ /etc/php-fpm.d/
 
 # Supervisor (très important pour lancer plusieurs services proprement en Kubernetes)
 RUN dnf install -y supervisor
-COPY supervisord/supervisord.conf /etc/supervisord.conf
-COPY supervisord/supervisord.d/ /etc/supervisord.d/
+COPY /etc/supervisord/supervisord.conf /etc/supervisord.conf
+COPY /etc/supervisord/supervisord.d/ /etc/supervisord.d/
 
 # Outils divers
 RUN dnf install -y zip bzip2 unzip ImageMagick nano gettext ccze git wget bash-completion GeoIP GeoIP-GeoLite-data jpegoptim optipng hunspell-de hunspell-es-ES hunspell-nl hunspell-fr hunspell-it hunspell-en-GB iptables fail2ban whois monit pwgen telnet net-tools iputils procps-ng colordiff atop btop htop iotop dstat
