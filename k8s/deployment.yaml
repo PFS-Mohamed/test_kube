@@ -14,10 +14,23 @@ spec:
         app: php-app
     spec:
       containers:
-      - name: php-app
-        image: ghcr.io/PFS-Mohamed/test_kube:latest
-        ports:
-        - containerPort: 80
+        - name: php-app
+          image: pfs-mohamed/test_kube:latest
+          ports:
+            - containerPort: 80
+            - containerPort: 443
+          volumeMounts:
+            - name: certs
+              mountPath: /etc/letsencrypt
+            - name: php-logs
+              mountPath: /var/log/php
+      volumes:
+        - name: certs
+          secret:
+            secretName: tls-certs
+        - name: php-logs
+          persistentVolumeClaim:
+            claimName: php-logs-pvc
 ---
 apiVersion: v1
 kind: Service
@@ -27,8 +40,9 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-  - port: 80
-    targetPort: 80
+    - port: 80
+      targetPort: 80
+    - port: 443
+      targetPort: 443
   selector:
     app: php-app
-
