@@ -21,10 +21,10 @@ RUN dnf module reset php -y && \
 # Apache
 RUN dnf install -y httpd httpd-tools mod_http2 mod_ssl
 
-COPY apache/httpd.conf /etc/httpd/conf/httpd.conf
-COPY apache/.htpasswd /etc/httpd/.htpasswd
-COPY apache/.docpasswd /etc/httpd/.docpasswd
-COPY certs/ /etc/letsencrypt/
+COPY /etc/apache/httpd.conf /etc/httpd/conf/httpd.conf
+COPY /etc/apache/.htpasswd /etc/httpd/.htpasswd
+COPY /etc/apache/.docpasswd /etc/httpd/.docpasswd
+COPY /etc/certs/ /etc/letsencrypt/
 
 # PHP config
 COPY /etc/php/php.ini /etc/php.ini
