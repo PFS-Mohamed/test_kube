@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: php-app
+  name: php-app-{{ TAG }}
   namespace: test1
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: php-app
+      app: php-app-{{ TAG }}
   template:
     metadata:
       labels:
-        app: php-app
+        app: php-app-{{ TAG }}
     spec:
       containers:
-        - name: php-app
+        - name: php-app-{{ TAG }}
           image: mohamedtolbapfs/test_kube:latest
           imagePullPolicy: Always
           ports:
@@ -48,4 +48,4 @@ spec:
       port: 443
       targetPort: 443
   selector:
-    app: php-app
+    app: php-app-{{ TAG }}
