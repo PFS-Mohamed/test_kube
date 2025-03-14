@@ -40,9 +40,11 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - port: 80
+    - name: http
+      port: 80
       targetPort: 80
-    - port: 443
+    - name: https
+      port: 443
       targetPort: 443
   selector:
     app: php-app
