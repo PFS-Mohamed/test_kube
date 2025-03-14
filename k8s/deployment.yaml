@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: php-app-{{ TAG }}
+  name: php-app
   namespace: test1
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: php-app-{{ TAG }}
+      app: php-app
   template:
     metadata:
       labels:
-        app: php-app-{{ TAG }}
+        app: php-app
     spec:
       containers:
-        - name: php-app-{{ TAG }}
+        - name: php-app
           image: mohamedtolbapfs/test_kube:latest
           imagePullPolicy: Always
           ports:
