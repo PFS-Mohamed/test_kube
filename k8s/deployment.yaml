@@ -24,6 +24,7 @@ spec:
               mountPath: docker_prism/etc/letsencrypt
             - name: php-logs
               mountPath: /var/log/php
+          imagePullPolicy: Always
       volumes:
         - name: certs
           secret:
