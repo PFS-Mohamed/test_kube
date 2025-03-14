@@ -21,29 +21,29 @@ RUN dnf module reset php -y && \
 # Apache
 RUN dnf install -y httpd httpd-tools mod_http2 mod_ssl
 
-COPY apache/httpd.conf /etc/httpd/conf/httpd.conf
-COPY apache/.htpasswd /etc/httpd/.htpasswd
-COPY apache/.docpasswd /etc/httpd/.docpasswd
-COPY certs/ /etc/letsencrypt/
+COPY etc/apache/httpd.conf /etc/httpd/conf/httpd.conf
+COPY etc/apache/.htpasswd /etc/httpd/.htpasswd
+COPY etc/apache/.docpasswd /etc/httpd/.docpasswd
+COPY etc/certs/ /etc/letsencrypt/
 
 # PHP config
-COPY php/php.ini /etc/php.ini
-COPY php/php-fpm.conf /etc/php-fpm.conf
-COPY php/php-fpm.d/ /etc/php-fpm.d/
+COPY etc/php/php.ini /etc/php.ini
+COPY etc/php/php-fpm.conf /etc/php-fpm.conf
+COPY etc/php/php-fpm.d/ /etc/php-fpm.d/
 
 # INDEX.PHP
 COPY releases/local/public /var/www/public/
 
 # Supervisor (très important pour lancer plusieurs services proprement en Kubernetes)
 RUN dnf install -y supervisor
-COPY supervisord/supervisord.conf /etc/supervisord.conf
-COPY supervisord/supervisord.d/ /etc/supervisord.d/
+COPY etc/supervisord/supervisord.conf /etc/supervisord.conf
+COPY etc/supervisord/supervisord.d/ /etc/supervisord.d/
 
 # Outils divers
 RUN dnf install -y zip bzip2 unzip ImageMagick nano gettext ccze git wget bash-completion GeoIP GeoIP-GeoLite-data jpegoptim optipng hunspell-de hunspell-es-ES hunspell-nl hunspell-fr hunspell-it hunspell-en-GB iptables fail2ban whois monit pwgen telnet net-tools iputils procps-ng colordiff atop btop htop iotop dstat
 
 # Init script
-COPY init.sh /usr/local/bin/init.sh
+COPY etc/init.sh /usr/local/bin/init.sh
 RUN chmod +x /usr/local/bin/init.sh
 
 # Répertoires nécessaires
