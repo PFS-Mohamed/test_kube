@@ -55,7 +55,11 @@ jobs:
 
       - name: Generate image tag
         id: vars
+        # à laisser si on veut garder le même tag si le même commit
         run: echo "TAG=v$(date +%Y%m%d)-${GITHUB_SHA::7}" >> $GITHUB_ENV
+        # à laisser si on veut à chaque push crée une image différente malgré le même commit
+        # run: echo "TAG=v$(date +%Y%m%d-%H%M%S)" >> $GITHUB_ENV
+
 
       - name: Build and push Docker image
         run: |
