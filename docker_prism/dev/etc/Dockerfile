@@ -4,7 +4,7 @@ FROM rockylinux:9
 RUN dnf install -y epel-release && \
     dnf install -y https://rpms.remirepo.net/enterprise/remi-release-9.rpm
 
-COPY bash/.bash_profile /root/.bashrc
+COPY etc/bash/.bash_profile /root/.bashrc
 
 # PHP 8.3
 ENV PHP_VERSION=8.3
