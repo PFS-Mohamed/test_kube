@@ -16,6 +16,7 @@ spec:
       containers:
         - name: php-app
           image: mohamedtolbapfs/test_kube:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
             - containerPort: 443
@@ -24,7 +25,6 @@ spec:
               mountPath: docker_prism/etc/letsencrypt
             - name: php-logs
               mountPath: /var/log/php
-          imagePullPolicy: Always
       volumes:
         - name: certs
           secret:
