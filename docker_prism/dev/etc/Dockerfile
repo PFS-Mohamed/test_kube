@@ -31,6 +31,9 @@ COPY php/php.ini /etc/php.ini
 COPY php/php-fpm.conf /etc/php-fpm.conf
 COPY php/php-fpm.d/ /etc/php-fpm.d/
 
+# INDEX.PHP
+COPY docker_prism/dev/releases/local/public /var/www/public/
+
 # Supervisor (très important pour lancer plusieurs services proprement en Kubernetes)
 RUN dnf install -y supervisor
 COPY supervisord/supervisord.conf /etc/supervisord.conf
