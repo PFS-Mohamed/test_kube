@@ -32,7 +32,7 @@ COPY etc/php/php-fpm.conf /etc/php-fpm.conf
 COPY etc/php/php-fpm.d/ /etc/php-fpm.d/
 
 # INDEX.PHP
-COPY releases/local/public /var/www/public/
+COPY releases/local/public/ /var/www/public/
 
 # Supervisor (très important pour lancer plusieurs services proprement en Kubernetes)
 RUN dnf install -y supervisor
