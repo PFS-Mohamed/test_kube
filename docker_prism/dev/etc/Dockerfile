@@ -31,8 +31,7 @@ COPY etc/php/php.ini /etc/php.ini
 COPY etc/php/php-fpm.conf /etc/php-fpm.conf
 COPY etc/php/php-fpm.d/ /etc/php-fpm.d/
 
-# INDEX.PHP
-COPY releases/local/public/ /var/www/public/
+
 
 # Supervisor (très important pour lancer plusieurs services proprement en Kubernetes)
 RUN dnf install -y supervisor
@@ -49,6 +48,9 @@ RUN chmod +x /usr/local/bin/init.sh
 # Répertoires nécessaires
 RUN mkdir -p /run/php-fpm/ /var/log/php/ /var/www/public
 RUN chown -R apache:apache /var/www/public
+
+# INDEX.PHP
+COPY releases/local/public/ /var/www/public/
 
 # Exposition des ports requis pour Kubernetes
 EXPOSE 80 443
