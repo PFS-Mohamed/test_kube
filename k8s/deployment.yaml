@@ -20,11 +20,11 @@ spec:
           ports:
             - containerPort: 80
             - containerPort: 443
-            resources:
-              requests:
-                cpu: "100m"
-              limits:
-                cpu: "500m"
+          resources:
+             requests:
+               cpu: "100m"
+             limits:
+               cpu: "500m"
           volumeMounts:
             - name: certs
               mountPath: docker_prism/etc/letsencrypt
