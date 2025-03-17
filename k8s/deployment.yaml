@@ -53,4 +53,4 @@ spec:
       port: 443
       targetPort: 443
   selector:
-    app: php-app-{{ TAG }}
+    app: php-app
