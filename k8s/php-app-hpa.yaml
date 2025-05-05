@@ -2,7 +2,7 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: php-app-hpa
-  namespace: test1
+  namespace: argocd
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
