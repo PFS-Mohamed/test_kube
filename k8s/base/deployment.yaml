@@ -35,7 +35,7 @@ spec:
       volumes:
         - name: certs
           secret:
-            secretName: tls-certs
+            secretName: phpapp-tls
         - name: php-logs
           persistentVolumeClaim:
             claimName: php-logs-pvc
