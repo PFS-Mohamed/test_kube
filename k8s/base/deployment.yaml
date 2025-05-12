@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php-app
+  namespace: argocd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: php-app
+  template:
+    metadata:
+      labels:
+        app: php-app
+    spec:
+      containers:
+        - name: php-app
+          image: mohamedtolbapfs/test_kube:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+            - containerPort: 443
+          resources:
+             requests:
+               memory: "2Gi"
+               cpu: "1"
+             limits:
+               memory: "4Gi"
+               cpu: "2"
+          volumeMounts:
+            - name: certs
+              mountPath: docker_prism/etc/letsencrypt
+            - name: php-logs
+              mountPath: /var/log/php
+      volumes:
+        - name: certs
+          secret:
+            secretName: tls-certs
+        - name: php-logs
+          persistentVolumeClaim:
+            claimName: php-logs-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: php-app-service
+  namespace: argocd
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+    - name: https
+      port: 443
+      targetPort: 443
+  selector:
+    app: php-app

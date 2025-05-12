@@ -1,0 +1,36 @@
+services:
+
+  ####################################################################################################
+  # PHP && apache
+  ####################################################################################################
+
+  stack:
+    container_name: ${START_NAME:-stack}-${WEB_ID:-0}
+    build: ./etc/
+    ports:
+      - "${HTTPD_SSL_PORT:-10443}:443"
+
+    environment:
+      - TZ=Europe/Paris
+      
+    volumes:
+
+      # DATA
+      #- /git/:/var/www/:cached
+       - ./releases/local:/var/www/:cached
+
+      # LOG
+       - ../../../../shared/log/php/:/var/log/php/
+       - ../../../../shared/storage/app/:/var/www/storage/app/
+       - ../../../../shared/storage/logs/:/var/www/storage/logs/
+
+    restart: on-failure:5
+    
+    networks:
+      #- ${START_NAME:-stack}
+      - stack
+
+
+networks:
+  stack:
+    external: true
