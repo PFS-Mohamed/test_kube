@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/kubernetes/ingress-nginx.git
-    targetRevision: controller-v1.10.1  # version stable actuelle (tu peux changer)
+    targetRevision: controller-v1.10.1
     path: deploy/static/provider/cloud
   destination:
     server: https://kubernetes.default.svc
