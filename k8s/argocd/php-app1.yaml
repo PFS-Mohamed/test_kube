@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: php-app
+  name: php-app1
   namespace: argocd
 spec:
   project: default
@@ -11,7 +11,7 @@ spec:
     path: k8s/apps/php-app1
   destination:
     server: https://kubernetes.default.svc
-    namespace: argocd
+    namespace: php-app1
   syncPolicy:
     automated:
       prune: true
