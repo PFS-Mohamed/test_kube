@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/PFS-Mohamed/test_kube
     targetRevision: main
-    path: k8s/apps/php-app
+    path: k8s/apps/php-app1
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
